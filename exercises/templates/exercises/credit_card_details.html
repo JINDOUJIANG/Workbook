@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+  {% for credit_card_detail in credit_card_details %}
+  <ul>
+    <li>{{credit_card_detail.name}}</li>
+    <li>{{credit_card_detail.number}}</li>
+    <li>{{credit_card_detail.card_type}}</li>
+  </ul>
+  {% endfor %}
+  <nav>
+    <a href="{% url 'exercises:credit_cards' %}">back</a>
+  </nav>
+{% endblock %}

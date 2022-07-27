@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+ 
+
+{% block body %}
+<h3>Phone book</h3>
+<img src='{% static "img/phone_book.jpg" %}' />
+<form action='/phone_list' method='get'>
+  {% csrf_token %}
+  <input type='text' name='Search' placeholder='Search'/>
+  <button>Search</button>
+</form>
+<table class='table'>
+<thead>
+  <tr>
+    <td>NAME</td>
+    <td>PHONE</td>
+  </tr>
+</thead>
+<tbody>
+{% for list in phone_lists %}
+  <tr>
+    <td>{{list.name}}</td>
+    <td>{{list.phone}}</td>
+    <td><a href='edit_phonelist/{{list.id}}'>edit</a></td>
+    <td><a href='details_phone/{{list.id}}'>view details</a></td>
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+<form>
+  <button formaction="/add_phonelist">Add contact</button>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'pinboard_project_redo.html' %}
+
+{% block body %}
+<div>
+  <form action="pinboard_project_redo_dashboardsave" method="post">
+    {% csrf_token %}
+    <div>
+      <textarea name="word" rows="3" placeholder="Say something" ></textarea>
+    </div>
+    <div>
+     <button type="submit">Submit</button> 
+    </div> 
+  </form>
+</div>
+<div>
+  <h1>Quotes</h1>
+  {% for word in words %}
+    <br>
+      <p>{{word.word}}</p>
+      <p>{{word.user}}</p>
+      <p>{{word.created_at}}</p> 
+    </br>
+  {% endfor %}
+</div>
+{% endblock %}

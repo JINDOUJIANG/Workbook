@@ -1,0 +1,10 @@
+{% extends 'base_alternate.html' %}
+
+{% block body %}
+<h3>Edit food</h3>
+<form action='{% url 'exercises:update_save' food_id=update_foodlist.id %}' method='post'>
+  {% csrf_token %}
+  <input type="text" name="name" placeholder="food" value="{{ update_foodlist.name }}" />
+  <button type="submit">Update</button>
+</form>
+{% endblock %}

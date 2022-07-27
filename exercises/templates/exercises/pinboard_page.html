@@ -1,0 +1,14 @@
+{% extends "demobase.html" %}
+
+{% block page_title %}
+<h1>Quotes</h1>
+{% for user_quote in user_quotes %}
+  <br>
+    <blockquote class="blockquote">
+      <p>{{user_quote.quote}}</p>
+      <footer>{{user_quote.user}}</footer>
+      <p>{{user_quote.created_at}}</p>
+    </blockquote>
+  </br>
+{% endfor %}
+{% endblock %}

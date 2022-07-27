@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>This is the Private Page</h1>
+<p>Hello {{ request.user.username }}</p>
+<button><a href="{% url 'exercises:logout' %}">Logout</a></button>
+<button><a href="{% url 'exercises:update_passwordpage' %}">update password</a></button>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<table class='table'>
+  <thead>
+    <tr>
+      <td>NAME</td>
+      <td>SECTOR</td>
+      <td>MARKET CAP</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stock in stocks %}
+      <tr>
+        <td>{{stock.company}}</td>
+        <td>{{stock.sector}}</td>
+        <td>{{stock.market_cap}}</td>
+      </tr>
+    {% endfor %}
+  </tbody> 
+</table>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base_alternate.html' %}
+{% load static %}
+
+
+{% block body %}
+<h2>Photography blog</h2>
+
+<body>
+  <img src="{% static "img/photography.jpg" %}"/>
+  {% for blog in blogs %}
+    <ul>
+      <li><a href="/blog_details/{{blog.id}}">{{blog.title}}</a></li>
+    </ul>
+  {% endfor %}
+</body>
+{% endblock %}

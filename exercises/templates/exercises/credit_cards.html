@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body %}
+<table class='table'>
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>NUMBER</th>
+      <th>TYPE</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for credit_card in credit_cards %}
+      <tr>
+        <td><a href="{% url 'exercises:credit_card_details' credit_card_id=credit_card.id %}">{{credit_card.name}}</a></td>
+        <!-- <td><a href="/credit_card_details/{{credit_card.id}}">{{credit_card.name}}</a></td> -->
+        <!-- <td>{{credit_card.id}}</td> -->
+        <td>{{credit_card.number}}</td>
+        <td>{{credit_card.card_type}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

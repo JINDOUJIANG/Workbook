@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h3>{{details_phone.name}}</h3>
+  <p>
+    <em>Phone:</em> {{details_phone.phone}}
+  </p>
+  <p>
+    <em>Address:</em> {{details_phone.address}}
+  </p>
+<a href='/phone_list'><< back</a>
+{% endblock %}

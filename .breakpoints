@@ -1,0 +1,28 @@
+{
+  "files": {
+    "exercises/templates/exercises/custom.js": [
+      {
+        "id": "cf4e0a45-39d6-44be-a3a1-7d7102d5cafe",
+        "line": 1,
+        "version": 0,
+        "index": 0
+      }
+    ],
+    "exercises/templates/exercises/superhero.html": [
+      {
+        "id": "2ac31d51-6f6c-4355-b0ab-9575d73110f5",
+        "line": 43,
+        "version": 1,
+        "index": 1495
+      }
+    ],
+    "exercises/views.py": [
+      {
+        "id": "7b1b35ed-ece6-4311-a3d6-ea6a38570227",
+        "line": 1,
+        "version": 32360,
+        "index": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% for superhero in superhero_details %}
+{{superhero.name}} page
+{% endfor %}
+{% endblock %}
+
+{% block body %}
+{% for superhero in superhero_details %}
+<h3>{{superhero.name}}</h3>
+<ul> 
+  <li>{{superhero.superpower}}</li>
+  <li>{{superhero.rating}}</li>
+  <li>{{superhero.age}}</li> 
+</ul>   
+{% endfor %}
+<a href= "{% url 'exercises:superherosearch' %}"><< back</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base_alternate.html" %}
+
+{% block body %}
+<h3>Foods</h3>
+<form action='/food_save' method='post'>
+  {% csrf_token %}
+  <input type='text' name='food' placeholder='food' value='{{food.name}}' />
+  <button type='submit'>Add</button>
+</form>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>NAME</th>
+    </tr>
+  </thead>
+  {% for food in food_list %}
+    <tbody>
+      <tr>
+        <td>{{food.name}}</td>
+        <td>
+          <a href='update_foodlist/{{ food.id }}'>edit</a>
+        </td>
+      </tr>
+    </tbody>
+  {% endfor %}
+</table>
+{% endblock %}

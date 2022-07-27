@@ -1,0 +1,38 @@
+{% extends "demobase.html" %}
+
+{% block page_title %}
+
+<div>
+  <h1>Login</h1>  
+</div>
+<form method="post" action="/pinboard_loginuser">
+  {% csrf_token %} 
+  <fieldset>
+    <div>
+      <p>
+        <em>* This page doesn't really work.</em> 
+        We cannot demo authentication because this site already has authentication. But it should work as expected.
+      </p>
+    </div>
+    <div>
+      <label>Username</label>
+    </div>
+    <div>
+      <input type="email" placeholder="Enter eamil" name="username">
+    </div> 
+    <div>
+      <label>Password</label>
+    </div>
+    <div>
+      <input type="password" placeholder="Password" name="password">
+    </div>
+    <div>
+      
+        <button>Login</button> 
+      
+    </div>
+  </fieldset>
+</form>
+
+
+{% endblock %}

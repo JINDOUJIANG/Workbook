@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h2>Animal search</h2>
+<form action='{% url 'exercises:pumba' %}' method='post'>
+{% csrf_token %}
+<input type='text' name='animal_name' placeholder='animal_name'/>
+<button type='submit'>Search</button>
+</form>
+{% endblock %}

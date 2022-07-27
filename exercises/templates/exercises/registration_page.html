@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>This is the Registration Page</h1>
+<form action="/register_user" method="post">
+    {% csrf_token %} 
+    <label><strong>Username</strong></label>
+    <br><input type="text" name="username" /></br>
+    <label><strong>Email</strong></label>
+    <br><input type="text" name="email" /></br>
+    <label><strong>Password</strong></label>
+    <br><input type="password" name="password" /></br>                  
+    <br><button type="submit">submit</button></br>            
+</form>
+{% endblock %}

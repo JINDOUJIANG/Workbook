@@ -1,0 +1,11 @@
+{% extends 'base_alternate.html' %}
+
+{% block body %}
+  {% for blog in blog_details %}
+    <h3>{{blog.title}}</h3>
+    <p>{{blog.body}}</p3>
+  {% endfor %}
+  <nav>
+    <a href="/blog"><< back</a>
+  </nav>
+{% endblock %}

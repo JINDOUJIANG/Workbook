@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Task list</h1>
+<div class='row'>
+  <div class='col-lg-6'>
+    <form action="{% url 'exercises:add' %}" method='post'>
+      {% csrf_token %}
+      <div>
+        <label for='name'>Task item</label>
+        <input id='name' type='text' name='task' placeholder='task item'>
+      </div>
+      <div>
+        <label for='priority'>Priority</label>
+        <select id='priority' name='priority' style='width: 20px;'>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div>
+        <button type='submit'>Add</button>
+      </div>
+    </form>
+  </div>
+  <div class='col-lg-6'>
+    <form action="{% url 'exercises:task_list' %}" method='get'>
+      <input type='text' name='task' placeholder='search tasks'>
+      <button type='submit'>Search</button>
+    </form> 
+</div>
+</div>
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <td>ITEM</td>
+          <td>PRIORITY</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for list in search_result %}
+          {% if not list.is_completed %}
+            <tr>
+              <td>{{list.item}}</td>
+              <td>{{list.priority}}</td>
+              <td>
+                <form action='{% url 'exercises:toggle_completion' list.id %}' method='post'>
+                  {% csrf_token %}
+                  <button type='submit'>Completed</button>
+                </form>
+              </td>
+              <td>
+                <a class='btn' href='{% url 'exercises:edit' list.id %}' style='padding: 9px; width: 44px; height: 26px;'>edit</a>
+              </td>
+              <td>
+<!--                 <form action='/custom_delete/{{list.id}}' method='post'> -->
+                <form action='{% url 'exercises:delete' list.id %}' method='post'>
+                  {% csrf_token %}
+                  <button type='submit'>Delete</button>
+                </form>
+              </td>
+            </tr>
+           {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+<h3>Completed</h3>
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <td>ITEM</td>
+          <td>PRIORITY</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in search_result %}
+          {% if data.is_completed %}
+            <tr>
+              <td><s>{{data.item}}</s></td>
+              <td><s>{{data.priority}}</s></td>
+              <td>
+                <form action='{% url 'exercises:toggle_completion' data.id %}' method='post'>
+                  {% csrf_token %}
+                  <button type='submit'>Incomplete</button>
+                </form>
+              </td>
+              <td>
+                <form action='/delete/{{data.id}}' method='post'>
+                  {% csrf_token %}
+                  <button type='submit'>Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock %}

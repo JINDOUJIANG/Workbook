@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<h3>Phone book</h3>
+<img src='{% static 'img/phone_book.jpg' %}'/>
+<form action='{% url 'exercises:phonebook' %}' method='get' >
+  <input type='text' name='name' placeholder='Search'>
+  <button>Search</button>
+</form>
+<table class='table'>
+  <thead>
+    <tr>
+      <td>NAME</td>
+      <td>PHONE</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in search_result %}
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.phonenumber}}</td>
+        <td><a href='{% url 'exercises:updatephonebook' item.id %}'>edit</a></td>
+        <td><a href='{% url 'exercises:detailsphonebook' item.id %}'>view details</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<form>
+  <button formaction="/add_contacts">Add contact</button>
+</form>
+{% endblock %}

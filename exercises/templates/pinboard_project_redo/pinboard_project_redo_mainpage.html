@@ -1,0 +1,13 @@
+{% extends 'pinboard_project_redo.html' %}
+
+{% block body %}
+{% for word in words %}
+  <div>
+    <br>
+      <p>{{word.word}}</p>
+      <p>{{word.user}}</p>
+      <p>{{word.created_at}}</p>
+    </br>
+  </div>
+{% endfor %}
+{% endblock %}

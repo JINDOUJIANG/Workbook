@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h2>Animal search</h2>
+<table class='table'>
+  
+    <th>
+      <tr>
+        <td>NAME</td>
+        <td>BIRTHPLACE</td>
+        <td>IS_MALE</td>
+      </tr>
+    </th>
+  
+  {% for animal in animals %}
+    <tbody>
+      <td>{{animal.name}}</td> 
+      <td>{{animal.birthplace}}</td> 
+      <td>{{animal.is_male}}</td> 
+    </tbody>
+  {% endfor %}
+</table>
+{% endblock %}

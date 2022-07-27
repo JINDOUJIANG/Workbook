@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<h3>Athletes</h3>
+<img src='{% static 'img/sports.abc245d6162d.png' %}' alt="Sports"/> 
+<br>
+  <form action='/athlete_create' method='post'>
+    {% csrf_token %}
+    <br>
+      <input type='text' name='name' placeholder='athlete name' />
+    <br/>
+    <br>
+      <label for='sport'></label>
+      <select id='sport' name='sport'>
+        <option value='NHL'>NHL</option>
+        <option value='NFL'>NFL</option>
+        <option value='MLB'>MLB</option>
+        <option value='NBA'>NBA</option>
+      </select>
+    <br/>
+    <br>
+      <button type='submit'>Add</button>
+    <br/> 
+  </form>
+<br/>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <td>NAME</td>
+      <td>SPORT</td>
+    </tr>
+  </thead>
+  <tbody>
+  {% for data in athlete_list %}
+    <tr class="{% if data.sport == 'MLB' %} table-success
+    {% elif data.sport == 'NBA' %} table-active
+    {% elif data.sport == 'NFL' %} table-primary
+    {% else %} table-dark 
+    {% endif %}"> 
+      <td>{{data.name}}</td> 
+      <td>{{data.sport}}</td> 
+      <td>
+        <form action="{% url 'exercises:athlete_delete' athlete_id=data.id %}" method='post'>
+          {% csrf_token %}
+          <input type='hidden' name='data'/>
+          <button type='submit'>Delete</button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% endblock %}

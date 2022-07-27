@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+<h3>Phone book</h3>
+<form action='/addphonelist_save' method='post'>
+  {% csrf_token %}
+  <p>
+    <input type='text' name='name' placeholder='name' value='{{add_phonelist.name}}'/>
+  </p>
+  <p>
+    <input type='text' name='phone' placeholder='phone' value='{{add_phonelist.phone}}'/>
+  </p>
+  <p>
+    <textarea name='address' cols='30' rows='5' placeholder='address'>{{add_phonelist.address}}</textarea>
+  </p>
+  <p>
+    <button type='submit'>Add</button>
+  </p>
+</form>
+{% endblock %} 

@@ -1,0 +1,24 @@
+{% extends 'pinboard_project_redo.html' %}
+
+{% block body %}
+<h1>Register</h1>
+
+<form action="/pinboard_project_redo_registeruser" method="post">
+  {% csrf_token %}
+  <div>
+   <br><label for="Username">Username</label><br>
+   <br><input id="Username" type="email" name="Username" placeholder="Enter email"><br> 
+  </div>
+  <div>
+    <br><label for="Email address">Email address</label><br>
+    <br><input id="Email address" type="email" name="Email address" placeholder="Enter email"><br>
+  </div>
+  <div>
+    <br><label for="Password">Password</label><br>
+    <br><input id="Password" type="password" name="Password" placeholder="Password"><br>
+  </div>
+  <div>
+    <br><button type="submit">Login</button><br>
+  </div>  
+</form>
+{% endblock %}

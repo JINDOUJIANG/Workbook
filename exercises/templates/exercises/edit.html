@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Edit task</h1>
+<form action='{% url 'exercises:edit_task' task.id %}' method='post'>
+  {% csrf_token %}
+  <div>
+    <label for='name'>Task item</label>
+    <input id='name' type='text' name='task' placeholder='task item' value='{{task.item}}'>
+  </div>
+  <div>
+    <label for='priority'>Priority</label>
+    <select id='priority' name='priority' style='width: 20px;'>
+        <option value="1" {% if task.priority == '1' %} selected=1 {% endif %}>1</option>
+        <option value="2" {% if task.priority == '2' %} selected=2 {% endif %}>2</option>
+        <option value="3" {% if task.priority == '3' %} selected=3 {% endif %}>3</option>
+        <option value="4" {% if task.priority == '4' %} selected=4 {% endif %}>4</option>
+        <option value="5" {% if task.priority == '5' %} selected=5 {% endif %}>5</option>
+    </select> 
+  </div>
+  <div>
+      <button type='submit'>Save</button>
+    </form> 
+  </div>
+</form>
+{% endblock %}

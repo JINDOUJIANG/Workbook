@@ -1,0 +1,33 @@
+{% extends "demobase.html" %}
+
+{% block page_title %}
+
+<form method="post" action="pinboard_dashboardsave">
+  {% csrf_token %}
+  <fieldset>
+    <div>
+      <textarea rows="3" placeholder="Say something" name="quotation"></textarea>
+    </div>
+    <div>
+      <a>
+        <button>Submit</button>
+      </a>
+    </div>
+  </fieldset>
+</form>
+
+<h2>Quotes</h2>
+
+{% for quotation in quotations %}
+  <br>
+    <blockquote class="blockquote">
+      <p>{{quotation.quote}}</p>
+      <footer>{{quotation.user}}</footer>
+      <p>{{quotation.created_at}}</p>
+    </blockquote>
+  </br>
+
+  
+{% endfor %}
+
+{% endblock %}

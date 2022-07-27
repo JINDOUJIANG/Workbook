@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<form action="/friend_save" method="post">
+  {% csrf_token %}
+  <input type="text" name="full_name" placeholder = "Friends name"/>
+  <button type="submit">Add</button>
+</form>
+<h3>Friends</h3>
+{% for friend in all_friends %}
+  <li>
+    {{friend.id}} . {{friend.name}}
+    <form action='{% url 'exercises:delete_friend' friend_id=friend.id %}' 
+    method='post'>
+      {% csrf_token %}
+      <button type='submit'>Delete</button>
+    </form>
+  </li>
+ {{friend.name}}
+{% endfor %}
+{% endblock %}

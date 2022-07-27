@@ -1,0 +1,62 @@
+{% load static %}
+{% load navibutton_authentication %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootswatch: Sketchy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/sketchy.bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/prism-okaidia.css" %}">
+    <link rel="stylesheet" href="{% static "css/custom.min.css" %}">
+  </head>
+  <body>
+    <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+      <div class="container">
+        <a href="{% url 'exercises:pinboard_page' %}" class="navbar-brand">Pinboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'exercises:pinboard_changepasswordpage' %}">Change password</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'exercises:pinboard_registerpage' %}">Register</a>
+              </li>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'exercises:pinboard_logoutuser' %}">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'exercises:pinboard_loginpage' %}">Login</a>
+              </li>
+            {% endif %}
+<!--             do custom tag here -->
+          {% navibutton_authentication request.user.is_authenticated %} 
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>{% block page_title %}{% endblock %}</h1>
+            <p class="lead">{% block lead %}{% endblock %}</p>
+          </div>
+          <div class="col-lg-4 col-md-5 col-sm-6">
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
